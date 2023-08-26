@@ -12,7 +12,7 @@ interface Props {
 export const LoginLayout: FC<Props> = ({ children }) => {
   return (
     <Container>
-      <div className='login_body'>
+      <div className="login_body">
         <Header />
 
         <div className="login_children">{children}</div>
@@ -34,6 +34,22 @@ export const LoginLayout: FC<Props> = ({ children }) => {
         className="green-blur"
         width={432}
         height={1088}
+      />
+
+      <Image
+        src="/blur-purple-mini.svg"
+        alt="Purple Blur"
+        className="purple-blur__mini"
+        width={256}
+        height={640}
+      />
+
+      <Image
+        src="/blur-green-mini.svg"
+        alt="Green Blur"
+        className="green-blur__mini"
+        width={256}
+        height={640}
       />
     </Container>
   )

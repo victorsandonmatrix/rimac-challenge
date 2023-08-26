@@ -9,4 +9,9 @@ export const Container = styled.p`
   padding: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  display: inline;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `

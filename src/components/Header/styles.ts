@@ -1,4 +1,3 @@
-'use client'
 import styled from 'styled-components'
 
 export const Container = styled.header`
@@ -20,6 +19,10 @@ export const Container = styled.header`
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.2px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .header_telf {
