@@ -9,20 +9,19 @@ import { Container } from './styles'
 import { useEffect, useState } from 'react'
 
 export default function Success() {
-  const [choosedPlan, setChoosedPlan] = useState<any>()
+  const [plan, setPlan] = useState()
+  const [price, setPrice] = useState()
   const [name, setName] = useState()
   const [dni, setDni] = useState()
   const [telf, setTelf] = useState()
 
   useEffect(() => {
-    setChoosedPlan(getItem('choosedPlan'))
+    setPlan(getItem('choosedPlan').name)
+    setPrice(getItem('choosedPlan').price)
     setName(getItem('user').name)
     setDni(getItem('dni'))
     setTelf(getItem('telf'))
   }, [])
-
-  const plan = choosedPlan.name
-  const price = choosedPlan.price
 
   return (
     <MainLayout>
