@@ -1,9 +1,11 @@
+'use client'
 import { useRouter } from 'next/navigation'
 
 import { PlansResponse } from '@/fetch/getPlans'
 import { PlanCard } from '../PlanCard/PlanCard'
 
 import { Container } from './styles'
+import { setItem } from '@/util/storage'
 
 interface Props {
   age: number
@@ -16,7 +18,7 @@ export const Plans = ({ age, plans, choosedCard }: Props) => {
   const discount = choosedCard === 1 ? 1 : 0.95
 
   const choosePlan = (plan: (typeof plans.list)[0]) => {
-    localStorage.setItem('choosedPlan', JSON.stringify(plan))
+    setItem('choosedPlan', JSON.stringify(plan))
     push('success')
   }
 
