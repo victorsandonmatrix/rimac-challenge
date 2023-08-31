@@ -6,12 +6,21 @@ import { Separator } from '@/components/Separator/Separator'
 import { getItem } from '@/util/storage'
 
 import { Container } from './styles'
+import { useEffect, useState } from 'react'
 
 export default function Success() {
-  const choosedPlan = getItem('choosedPlan')
-  const name = getItem('user').name
-  const dni = getItem('dni')
-  const telf = getItem('telf')
+  const [choosedPlan, setChoosedPlan] = useState<any>()
+  const [name, setName] = useState()
+  const [dni, setDni] = useState()
+  const [telf, setTelf] = useState()
+
+  useEffect(() => {
+    setChoosedPlan(getItem('choosedPlan'))
+    setName(getItem('user').name)
+    setDni(getItem('dni'))
+    setTelf(getItem('telf'))
+  }, [])
+
   const plan = choosedPlan.name
   const price = choosedPlan.price
 
