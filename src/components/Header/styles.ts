@@ -1,12 +1,13 @@
+'use client'
 import styled from 'styled-components'
 
 export const Container = styled.header`
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 1rem;
+  justify-content: space-between;
+  padding-top: 1rem;
 
   .header_right {
     display: flex;

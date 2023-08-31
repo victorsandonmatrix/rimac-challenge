@@ -9,9 +9,10 @@ interface Props {
   type: HTMLInputTypeAttribute
   isDni?: boolean
   max: number
+  onChange: (val: any) => void
 }
 
-export const Input: FC<Props> = ({ label, type, isDni, max }) => {
+export const Input: FC<Props> = ({ label, type, isDni, max, onChange }) => {
   return (
     <StyledInput>
       {isDni && (
@@ -29,7 +30,7 @@ export const Input: FC<Props> = ({ label, type, isDni, max }) => {
       <div className="input_right">
         <p className="input_label">{label}</p>
 
-        <input type={type} maxLength={max} />
+        <input type={type} maxLength={max} onChange={onChange} />
       </div>
     </StyledInput>
   )

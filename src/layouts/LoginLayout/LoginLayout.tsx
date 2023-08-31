@@ -1,15 +1,21 @@
-import { FC, ReactNode } from 'react'
-
-import { Footer } from '../Footer/Footer'
-import { Header } from '../Header/Header'
-import { Container } from './styles'
+'use client'
 import Image from 'next/image'
+import { FC, ReactNode, useEffect } from 'react'
+
+import { Footer } from '../../components/Footer/Footer'
+import { Header } from '../../components/Header/Header'
+
+import { Container } from './styles'
+import { resetStorage } from '@/util/storage'
 
 interface Props {
   children: ReactNode
 }
 
 export const LoginLayout: FC<Props> = ({ children }) => {
+  useEffect(() => {
+    resetStorage()
+  }, [])
   return (
     <Container>
       <div className="login_body">

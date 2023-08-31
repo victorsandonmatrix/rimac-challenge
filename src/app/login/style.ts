@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -27,7 +28,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 350px;
+    margin-bottom: 1rem;
   }
 
   .login_section__head {
@@ -38,6 +39,7 @@ export const Container = styled.div`
     @media (max-width: 768px) {
       flex-direction: row;
       align-items: center;
+      gap: 0.75rem;
     }
   }
 
@@ -77,7 +79,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .link_tyc {

@@ -1,4 +1,6 @@
 'use client'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -6,11 +8,26 @@ import { Tag } from '@/components/Tag/Tag'
 import { Input } from '@/components/Input/Input'
 import { Button } from '@/components/Button/Button'
 import { Checkbox } from '@/components/Checkbox/Checkbox'
-import { LoginLayout } from '@/components/LoginLayout/LoginLayout'
+import { LoginLayout } from '@/layouts/LoginLayout/LoginLayout'
 
 import { Container } from './style'
+import { setItem } from '@/util/storage'
 
 const LoginPage = () => {
+  const { push } = useRouter()
+  const [dni, setDni] = useState('')
+  const [telf, setTelf] = useState('')
+
+  const dni_match = dni.length === 8
+  const telf_match = telf.length === 9
+  const evaluateInputs = !!dni_match && !!telf_match
+
+  const handleSubmit = async () => {
+    await setItem('dni', dni)
+    await setItem('telf', telf)
+    push('/')
+  }
+
   return (
     <LoginLayout>
       <Container>
@@ -38,16 +55,27 @@ const LoginPage = () => {
               className="login_wallpaper__mini"
             />
           </div>
-          
+
           <p className="login_text">
             Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra
             asesoría. 100% online.
           </p>
 
           <div className="login_inputs">
-            <Input label="Nro. de documento" type="number" isDni max={8} />
+            <Input
+              onChange={({ target }) => setDni(target.value)}
+              label="Nro. de documento"
+              type="number"
+              isDni
+              max={8}
+            />
 
-            <Input label="Celular" type="number" max={9} />
+            <Input
+              onChange={({ target }) => setTelf(target.value)}
+              label="Celular"
+              type="number"
+              max={9}
+            />
           </div>
 
           <div className="login_terms_and_conditions">
@@ -60,7 +88,9 @@ const LoginPage = () => {
             </Link>
           </div>
 
-          <Button>Cotiza aquí</Button>
+          <Button disabled={!evaluateInputs} onClick={handleSubmit}>
+            Cotiza aquí
+          </Button>
         </div>
       </Container>
     </LoginLayout>

@@ -1,6 +1,11 @@
+'use client'
 import styled from 'styled-components'
 
-export const Container = styled.p`
+interface Props {
+  $size?: 'sm' | 'lg'
+}
+
+export const Container = styled.p<Props>`
   color: #03050f;
   font-weight: 700;
   letter-spacing: 0.4px;
@@ -10,8 +15,10 @@ export const Container = styled.p`
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   display: inline;
+  font-size: ${({ $size }) =>
+    !$size ? '16px' : $size === 'sm' ? '12px' : '16px'};
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: ${({ $size }) => !$size && '12px'};
   }
 `
